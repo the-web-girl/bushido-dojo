@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horaires | Bushido Judo & Ju-Jitsu – Lyon</title>
+  <meta name="description" content="Horaires des cours de judo et ju-jitsu à Lyon. Éveil judo, enfants, ados, adultes, judo adapté, taïso. Filtrables par discipline et niveau.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif+JP:wght@300;400;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bushido-style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <header class="header" role="banner" id="header">
+    <nav class="nav container" role="navigation" aria-label="Navigation principale">
+      <a href="bushido-index.html" class="nav__logo"><div class="logo-wrap"><span class="logo-kanji" lang="ja">武</span><div class="logo-text"><span class="logo-main">BUSHIDO</span><span class="logo-sub">Judo · Ju-Jitsu</span></div></div></a>
+      <button class="nav__burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu"><span class="burger-line"></span><span class="burger-line"></span></button>
+      <ul class="nav__links" id="navMenu" role="list">
+        <li><a href="bushido-index.html" class="nav__link">Accueil</a></li><li><a href="bushido-club.html" class="nav__link">Le Club</a></li>
+        <li><a href="bushido-sensei.html" class="nav__link">Sensei</a></li>
+        <li><a href="bushido-horaires.html" class="nav__link is-active" aria-current="page">Horaires</a></li>
+        <li><a href="bushido-tarifs.html" class="nav__link">Tarifs</a></li><li><a href="bushido-inscription.html" class="nav__link">Inscription</a></li>
+        <li><a href="bushido-contact.html" class="nav__link">Contact</a></li><li><a href="bushido-inscription.html" class="nav__trial">Essai gratuit</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section class="page-hero"><div class="ph-bg"><span class="ph-kanji" lang="ja">時</span></div><div class="container ph-content"><div class="section-tag stagger-1">Planning</div><h1 class="ph-title stagger-2">Horaires</h1><p class="ph-sub stagger-3">42 cours par semaine pour tous les niveaux.</p></div></section>
+
+    <section class="section" aria-labelledby="sched-h">
+      <div class="container">
+        <!-- FILTRES -->
+        <div class="filters reveal" role="group" aria-label="Filtrer les cours">
+          <span class="filter-label">Filtrer :</span>
+          <div class="filter-row">
+            <button class="filter-btn active" data-filter="all">Tous les cours</button>
+            <button class="filter-btn" data-filter="eveil">Éveil (4–6 ans)</button>
+            <button class="filter-btn" data-filter="enfants">Enfants</button>
+            <button class="filter-btn" data-filter="ados">Ados</button>
+            <button class="filter-btn" data-filter="adultes">Adultes</button>
+            <button class="filter-btn" data-filter="adapte">Judo Adapté</button>
+          </div>
+          <div class="filter-row">
+            <button class="filter-btn" data-filter="judo">Judo</button>
+            <button class="filter-btn" data-filter="jujitsu">Ju-Jitsu</button>
+            <button class="filter-btn" data-filter="taiso">Taïso</button>
+            <button class="filter-btn" data-filter="compet">Compétition</button>
+          </div>
+        </div>
+
+        <h2 id="sched-h" class="sr-only">Tableau des horaires</h2>
+        <div class="sched-wrap reveal" role="region" aria-label="Tableau des cours" tabindex="0">
+          <table class="sched-tbl">
+            <caption class="sr-only">Horaires des cours Bushido Judo Club</caption>
+            <thead>
+              <tr>
+                <th scope="col">Horaire</th>
+                <th scope="col">Lundi</th><th scope="col">Mardi</th>
+                <th scope="col">Mercredi</th><th scope="col">Jeudi</th>
+                <th scope="col">Vendredi</th><th scope="col">Samedi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tc">9h – 10h</td>
+                <td></td><td></td>
+                <td><div class="slot slot--eveil" data-tags="eveil judo">🌸 Éveil Judo<span class="slot-age">4–6 ans</span></div></td>
+                <td></td><td></td>
+                <td><div class="slot slot--eveil" data-tags="eveil judo">🌸 Éveil Judo<span class="slot-age">4–6 ans</span></div></td>
+              </tr>
+              <tr>
+                <td class="tc">10h – 11h</td><td></td><td></td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">7–10 ans</span></div></td>
+                <td></td><td></td>
+                <td><div class="slot slot--taiso" data-tags="taiso adultes">🧘 Taïso<span class="slot-age">Adultes</span></div></td>
+              </tr>
+              <tr>
+                <td class="tc">11h – 12h</td><td></td><td></td><td></td><td></td><td></td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">10–13 ans</span></div></td>
+              </tr>
+              <tr>
+                <td class="tc">14h – 15h30</td><td></td><td></td>
+                <td><div class="slot slot--adapte" data-tags="adapte judo">♿ Judo Adapté<span class="slot-age">Tous âges</span></div></td>
+                <td></td><td></td><td></td>
+              </tr>
+              <tr>
+                <td class="tc">16h – 17h</td>
+                <td><div class="slot slot--eveil" data-tags="eveil judo">🌸 Éveil Judo<span class="slot-age">4–6 ans</span></div></td>
+                <td><div class="slot slot--eveil" data-tags="eveil judo">🌸 Éveil Judo<span class="slot-age">4–6 ans</span></div></td>
+                <td></td>
+                <td><div class="slot slot--eveil" data-tags="eveil judo">🌸 Éveil Judo<span class="slot-age">4–6 ans</span></div></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td class="tc">17h – 18h15</td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">7–10 ans</span></div></td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">10–13 ans</span></div></td>
+                <td></td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">7–10 ans</span></div></td>
+                <td><div class="slot slot--enfants" data-tags="enfants judo">🥋 Judo Enfants<span class="slot-age">10–13 ans</span></div></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="tc">18h15 – 19h30</td>
+                <td><div class="slot slot--ados" data-tags="ados judo">🥋 Judo Ados<span class="slot-age">13–17 ans</span></div></td>
+                <td><div class="slot slot--adapte" data-tags="adapte judo">♿ Judo Adapté<span class="slot-age">Tous âges</span></div></td>
+                <td></td>
+                <td><div class="slot slot--ados" data-tags="ados judo">🥋 Judo Ados<span class="slot-age">13–17 ans</span></div></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td class="tc">19h30 – 21h</td>
+                <td><div class="slot slot--adultes" data-tags="adultes judo">🥋 Judo Adultes<span class="slot-age">Débutants</span></div></td>
+                <td><div class="slot slot--jujitsu" data-tags="jujitsu adultes">🥋 Ju-Jitsu<span class="slot-age">Inter.</span></div></td>
+                <td><div class="slot slot--adultes" data-tags="adultes judo">🥋 Judo Adultes<span class="slot-age">Tous niveaux</span></div></td>
+                <td><div class="slot slot--jujitsu" data-tags="jujitsu adultes">🥋 Ju-Jitsu<span class="slot-age">Avancés</span></div></td>
+                <td><div class="slot slot--compet" data-tags="adultes judo compet">🏆 Compétition<span class="slot-age">Sélectionnés</span></div></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="tc">20h – 21h30</td><td></td><td></td>
+                <td><div class="slot slot--jujitsu" data-tags="jujitsu adultes">🥋 Ju-Jitsu<span class="slot-age">Débutants</span></div></td>
+                <td></td>
+                <td><div class="slot slot--taiso" data-tags="taiso adultes">🧘 Taïso<span class="slot-age">Détente</span></div></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- LÉGENDE -->
+        <div class="sched-legend reveal" aria-label="Légende">
+          <div class="leg"><span class="leg-dot" style="background:#c8973a;"></span>Éveil</div>
+          <div class="leg"><span class="leg-dot" style="background:#3a8a3a;"></span>Enfants</div>
+          <div class="leg"><span class="leg-dot" style="background:#2a60b0;"></span>Ados</div>
+          <div class="leg"><span class="leg-dot" style="background:#1a2a40;"></span>Adultes Judo</div>
+          <div class="leg"><span class="leg-dot" style="background:#a02020;"></span>Ju-Jitsu</div>
+          <div class="leg"><span class="leg-dot" style="background:#7a4a20;"></span>Taïso</div>
+          <div class="leg"><span class="leg-dot" style="background:#5a3090;"></span>Judo Adapté</div>
+          <div class="leg"><span class="leg-dot" style="background:#c8973a; border:2px solid #fff;"></span>Compétition</div>
+        </div>
+
+        <!-- GROUPES -->
+        <div class="groups reveal" aria-labelledby="groups-h">
+          <h2 id="groups-h" class="section-h" style="margin-top:var(--pad-xl);">Quel groupe<br><em>vous correspond ?</em></h2>
+          <div class="groups-grid">
+            <div class="group-card"><span class="gc-age">4–6 ans</span><h3>Éveil Judo</h3><p>Initiation ludique. Chutes, roulades, équilibre. Pas de technique formelle, mais l'amour du tatami.</p></div>
+            <div class="group-card"><span class="gc-age">7–13 ans</span><h3>Judo Enfants</h3><p>Apprentissage progressif des chutes, projections et immobilisations. Passage de grades et compétitions.</p></div>
+            <div class="group-card group-card--hot"><span class="gc-age">13–17 ans</span><h3>Judo Ados</h3><p>Technique affinée, sparring encadré, préparation aux compétitions régionales.</p></div>
+            <div class="group-card"><span class="gc-age">Adultes</span><h3>Judo Adultes</h3><p>Débutant à confirmé, trois groupes distincts. Loisir ou compétition, chacun progresse à son rythme.</p></div>
+            <div class="group-card"><span class="gc-age">12 ans+</span><h3>Ju-Jitsu</h3><p>Art martial complet. Frappes contrôlées, projections, contrôles et self-défense.</p></div>
+            <div class="group-card"><span class="gc-age">Tous âges</span><h3>Judo Adapté</h3><p>Programme sur-mesure pour personnes en situation de handicap, par des enseignants spécialisés.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band section" aria-labelledby="ctaband3-h"><div class="container"><div class="ctaband-inner reveal"><h2 id="ctaband3-h" class="section-h">Un créneau vous convient ?</h2><p class="section-p">Réservez votre cours d'essai gratuit dès maintenant.</p><div class="ctaband-btns"><a href="bushido-inscription.html" class="cta-primary cta-primary--large">S'inscrire</a><a href="bushido-tarifs.html" class="cta-ghost">Voir les tarifs</a></div></div></div></section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="bushido-index.html" class="nav__logo footer-logo"><div class="logo-wrap"><span class="logo-kanji" lang="ja">武</span><div class="logo-text"><span class="logo-main">BUSHIDO</span><span class="logo-sub">Judo · Ju-Jitsu</span></div></div></a><p>Club affilié à la FFJDA depuis 1991.</p><div class="footer-social"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+  <nav class="footer-nav" aria-label="Navigation footer"><h3>Navigation</h3><ul role="list"><li><a href="bushido-index.html">Accueil</a></li><li><a href="bushido-club.html">Le Club</a></li><li><a href="bushido-sensei.html">Sensei</a></li><li><a href="bushido-horaires.html">Horaires</a></li><li><a href="bushido-tarifs.html">Tarifs</a></li><li><a href="bushido-inscription.html">Inscription</a></li><li><a href="bushido-contact.html">Contact</a></li></ul></nav>
+  <div class="footer-contact"><h3>Nous trouver</h3><address><p>🏯 15 Allée des Judokas, 69003 Lyon</p><p>📞 <a href="tel:+33472000000">04 72 00 00 00</a></p></address></div>
+  <div class="footer-legal"><h3>Légal</h3><ul role="list"><li><a href="bushido-mentions.html">Mentions légales</a></li><li><a href="bushido-confidentialite.html">Confidentialité</a></li></ul></div></div>
+  <div class="footer-bottom"><p>&copy; 2024 Bushido Judo &amp; Ju-Jitsu Club</p><p class="footer-jp" lang="ja">柔よく剛を制す</p></div></div></footer>
+  <script src="bushido-script.js"></script>
+</body>
+</html>
