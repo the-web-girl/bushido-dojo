@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bushido Dojo – Template HTML/CSS/JS pour Club de Judo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f0e8;
+    --paper2: #ede7d9;
+    --gold: #b8922a;
+    --gold-light: #d4a84b;
+    --red: #8b1a1a;
+    --white: #fdfaf5;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Playfair Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '武';
+    position: absolute;
+    right: -80px; top: -60px;
+    font-family: var(--serif);
+    font-size: clamp(300px, 40vw, 600px);
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-left {
+    padding: clamp(40px, 6vw, 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(184,146,42,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    width: fit-content;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(42px, 5.5vw, 80px);
+    line-height: 1.05;
+    font-weight: 900;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(253,250,245,0.65);
+    max-width: 480px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .price-main {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .price-note {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(253,250,245,0.5);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    padding: 16px 40px;
+    text-decoration: none;
+    width: fit-content;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .hero-cta::after {
+    content: ' →';
+  }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(253,250,245,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-meta-item strong {
+    display: block;
+    font-size: 18px;
+    color: var(--white);
+    font-family: var(--serif);
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 700;
+  }
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    z-index: 2;
+  }
+  .mockup-stack {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+  }
+  .mockup-screen {
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .mockup-bar {
+    background: #111;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .mockup-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .mockup-dot:nth-child(1) { background: #ff5f57; }
+  .mockup-dot:nth-child(2) { background: #febc2e; }
+  .mockup-dot:nth-child(3) { background: #28c840; }
+  .mockup-url {
+    flex: 1;
+    margin: 0 12px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+  }
+  .mockup-url span {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+  }
+  .mockup-preview {
+    background: #0e0e0e;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  /* Fake site preview inside mockup */
+  .fake-nav {
+    height: 36px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 16px;
+  }
+  .fake-logo { width: 60px; height: 10px; background: var(--gold); opacity: 0.8; border-radius: 1px; }
+  .fake-link { width: 30px; height: 6px; background: rgba(255,255,255,0.15); border-radius: 1px; margin-left: auto; }
+  .fake-link + .fake-link { margin-left: 8px; }
+  .fake-hero-block {
+    flex: 1;
+    background: linear-gradient(135deg, #0e0e0e 0%, #1a1410 100%);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fake-hero-block::before {
+    content: '武';
+    position: absolute;
+    right: -10px; top: -20px;
+    font-family: var(--serif);
+    font-size: 100px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+  .fake-hero-text { flex: 1; }
+  .fake-h1-big { width: 70%; height: 14px; background: var(--gold); opacity: 0.7; border-radius: 1px; margin-bottom: 8px; }
+  .fake-h1-sm { width: 50%; height: 14px; background: rgba(184,146,42,0.4); border-radius: 1px; margin-bottom: 16px; }
+  .fake-p { width: 80%; height: 5px; background: rgba(255,255,255,0.15); border-radius: 1px; margin-bottom: 5px; }
+  .fake-p.short { width: 55%; }
+  .fake-btn { width: 80px; height: 22px; background: var(--gold); border-radius: 1px; margin-top: 12px; }
+  .fake-kanji-big {
+    font-family: var(--serif);
+    font-size: 70px;
+    color: rgba(184,146,42,0.25);
+    line-height: 1;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  /* Tablet mockup */
+  .mockup-tablet {
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    width: 200px;
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .mockup-tablet .mockup-bar { height: 22px; }
+  .mockup-tablet .mockup-dot { width: 7px; height: 7px; }
+  .mockup-tablet .mockup-preview { height: 130px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  /* ── WHAT'S INSIDE ── */
+  .section { padding: clamp(60px, 8vw, 120px) clamp(20px, 5vw, 80px); }
+  .section--dark { background: var(--ink); color: var(--white); }
+  .section--cream { background: var(--paper2); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .section-h {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+  .section-h em { font-style: italic; color: var(--gold-light); }
+  .section--dark .section-h em { color: var(--gold-light); }
+
+  /* PAGES GRID */
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .page-tile {
+    background: var(--paper2);
+    padding: 24px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .page-tile:hover { border-color: var(--gold); background: var(--white); }
+  .page-tile-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(14,14,14,0.3);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .page-tile-kanji {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .page-tile h3 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .page-tile p {
+    font-size: 13px;
+    color: rgba(14,14,14,0.6);
+    line-height: 1.5;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .feature-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(184,146,42,0.12);
+    border: 1px solid rgba(184,146,42,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .feature-body h4 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--white);
+  }
+  .feature-body p {
+    font-size: 13px;
+    color: rgba(253,250,245,0.55);
+    line-height: 1.6;
+  }
+
+  /* TECH STACK */
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .tech-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    background: rgba(184,146,42,0.06);
+  }
+
+  /* USE CASES */
+  .usecases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .usecase-card {
+    background: var(--white);
+    padding: 32px 24px;
+    border-top: 3px solid var(--gold);
+    border-bottom: 1px solid var(--paper2);
+  }
+  .usecase-card h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 12px 0 8px;
+  }
+  .usecase-card p {
+    font-size: 13px;
+    color: rgba(14,14,14,0.6);
+    line-height: 1.6;
+  }
+  .usecase-emoji { font-size: 28px; }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 40px;
+    margin-top: 32px;
+  }
+  .checklist li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(253,250,245,0.8);
+    line-height: 1.5;
+  }
+  .checklist li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  /* PRICING FINAL */
+  .pricing-final {
+    background: var(--ink);
+    color: var(--white);
+    padding: 80px clamp(20px, 5vw, 80px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-final::before {
+    content: '円';
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 500px;
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .pricing-final .container { position: relative; z-index: 2; }
+  .price-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin: 32px 0;
+  }
+  .price-currency {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--gold);
+    font-weight: 700;
+    align-self: flex-start;
+    margin-top: 12px;
+  }
+  .price-amount {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+  }
+  .price-type {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(253,250,245,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    align-self: flex-end;
+    margin-bottom: 16px;
+    text-align: left;
+    line-height: 1.6;
+  }
+  .price-includes {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .pi-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.5);
+  }
+  .pi-item span {
+    display: block;
+    font-size: 15px;
+    color: var(--white);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: var(--sans);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .cta-big {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    padding: 20px 60px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: var(--sans);
+  }
+  .cta-big:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .cta-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(253,250,245,0.3);
+    margin-top: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 0 auto 16px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .pages-grid { grid-template-columns: 1fr 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .usecases { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .price-amount { font-size: 80px; }
+  }
+  @media (max-width: 600px) {
+    .pages-grid { grid-template-columns: 1fr; }
+    .price-amount { font-size: 64px; }
+  }
+
+  /* QUOTE BREAK */
+  .quote-break {
+    background: var(--paper2);
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(14,14,14,0.08);
+    border-bottom: 1px solid rgba(14,14,14,0.08);
+  }
+  .quote-text {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 36px);
+    font-style: italic;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto 16px;
+    line-height: 1.4;
+  }
+  .quote-jp {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Template HTML · CSS · JS</div>
+    <h1>Bushido<br><em>Dojo</em></h1>
+    <p class="hero-sub">Un site web complet, prêt à l'emploi, pour club de judo, ju-jitsu ou art martial. 9 pages, design premium, 100% responsive. Aucun framework requis.</p>
+    <div class="price-block">
+      <div class="price-main">29€</div>
+      <div class="price-note">paiement unique<br>licence commerciale incluse</div>
+    </div>
+    <a href="#" class="hero-cta">Acheter ce template</a>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Pages<strong>9</strong></div>
+      <div class="hero-meta-item">Fichiers<strong>10</strong></div>
+      <div class="hero-meta-item">Framework<strong>Aucun</strong></div>
+      <div class="hero-meta-item">Licence<strong>Illimitée</strong></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="mockup-stack">
+      <div class="mockup-screen">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-url"><span>bushido-judo-lyon.fr</span></div>
+        </div>
+        <div class="mockup-preview">
+          <div class="fake-nav">
+            <div class="fake-logo"></div>
+            <div class="fake-link"></div>
+            <div class="fake-link"></div>
+            <div class="fake-link"></div>
+          </div>
+          <div class="fake-hero-block">
+            <div class="fake-hero-text">
+              <div class="fake-h1-big"></div>
+              <div class="fake-h1-sm"></div>
+              <div class="fake-p"></div>
+              <div class="fake-p short"></div>
+              <div class="fake-btn"></div>
+            </div>
+            <div class="fake-kanji-big" lang="ja">武</div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-tablet">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <div class="mockup-preview">
+          <div class="fake-nav">
+            <div class="fake-logo" style="width:40px"></div>
+          </div>
+          <div class="fake-hero-block" style="padding:12px;">
+            <div class="fake-hero-text">
+              <div class="fake-h1-big" style="width:80%"></div>
+              <div class="fake-p"></div>
+              <div class="fake-p short"></div>
+              <div class="fake-btn" style="width:60px;height:16px;margin-top:8px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── 9 PAGES ─── -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Contenu complet</div>
+    <h2 class="section-h">9 pages <em>prêtes à personnaliser</em></h2>
+    <p style="max-width:580px;color:rgba(14,14,14,0.6);font-size:15px;line-height:1.7;">Chaque page est autonome, soignée et interconnectée. Il suffit de remplacer les textes, logos et couleurs pour obtenir un site professionnel en quelques heures.</p>
+    <div class="pages-grid">
+      <div class="page-tile">
+        <div class="page-tile-num">01</div>
+        <span class="page-tile-kanji" lang="ja">道</span>
+        <h3>Accueil</h3>
+        <p>Hero animé, section disciplines, témoignages, FAQ, call-to-action. La vitrine parfaite.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">02</div>
+        <span class="page-tile-kanji" lang="ja">道場</span>
+        <h3>Le Club</h3>
+        <p>Timeline historique, valeurs avec kanjis, équipements, galerie. Raconte l'histoire du dojo.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">03</div>
+        <span class="page-tile-kanji" lang="ja">師</span>
+        <h3>Les Sensei</h3>
+        <p>Cards pour 9 enseignants avec grade, rôle, spécialité et bio. Facilement duplicable.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">04</div>
+        <span class="page-tile-kanji" lang="ja">時</span>
+        <h3>Horaires</h3>
+        <p>Tableau hebdomadaire filtrable (6 filtres), légende colorée, guide des groupes d'âge.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">05</div>
+        <span class="page-tile-kanji" lang="ja">金</span>
+        <h3>Tarifs</h3>
+        <p>4 formules tarifaires, réductions famille/étudiant, Pass Sport, infos pratiques paiement.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">06</div>
+        <span class="page-tile-kanji" lang="ja">入</span>
+        <h3>Inscription</h3>
+        <p>Cours d'essai gratuit, 4 étapes visuelles, checklist documents, formulaire avec validation.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">07</div>
+        <span class="page-tile-kanji" lang="ja">話</span>
+        <h3>Contact</h3>
+        <p>Formulaire complet, infos pratiques, réseaux sociaux, bloc carte intégré.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">08</div>
+        <span class="page-tile-kanji" lang="ja">技</span>
+        <h3>Techniques</h3>
+        <p>Présentation des disciplines (Judo, Ju-Jitsu, Taïso, Adapté) avec contenu pédagogique.</p>
+      </div>
+      <div class="page-tile">
+        <div class="page-tile-num">09</div>
+        <span class="page-tile-kanji" lang="ja">指</span>
+        <h3>Index / Nav</h3>
+        <p>Navigation principale cohérente sur toutes les pages, burger menu mobile accessible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUOTE ─── -->
+<div class="quote-break">
+  <p class="quote-text">« Un design qui respire l'authenticité du tatami — de la typographie japonaise au curseur personnalisé. »</p>
+  <p class="quote-jp" lang="ja">柔よく剛を制す</p>
+</div>
+
+<!-- ─── FEATURES ─── -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-tag" style="color:var(--gold)">Qualité technique</div>
+    <h2 class="section-h">Ce qui rend ce template <em>exceptionnel</em></h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div class="feature-body">
+          <h4>Responsive Mobile-First</h4>
+          <p>Conçu pour mobile, tablette et desktop. Burger menu accessible, tableaux scrollables, typography fluide avec clamp().</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">♿</div>
+        <div class="feature-body">
+          <h4>Accessibilité WCAG</h4>
+          <p>Aria-labels, skip-link, focus visible, contrastes respectés, rôles sémantiques, navigation clavier complète.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-body">
+          <h4>Design japonais authentique</h4>
+          <p>Kanjis calligraphiés, typographies Playfair Display + Noto Serif JP + Outfit, palette noir encre & or, curseur custom.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-body">
+          <h4>Animations soignées</h4>
+          <p>Scroll reveal avec IntersectionObserver, stagger effects, transitions hover, respect de prefers-reduced-motion.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-body">
+          <h4>Filtres interactifs</h4>
+          <p>Le tableau des horaires est filtrable par discipline et niveau (6 filtres), avec aria-pressed pour l'accessibilité.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+        <div class="feature-body">
+          <h4>Formulaires validés</h4>
+          <p>Validation en temps réel (blur + input), messages d'erreur accessibles, confirmation de succès intégrée.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌐</div>
+        <div class="feature-body">
+          <h4>SEO-ready</h4>
+          <p>Balises meta title & description sur chaque page, structure HTML5 sémantique, landmarks ARIA, lang="fr".</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🛠️</div>
+        <div class="feature-body">
+          <h4>Zéro dépendance</h4>
+          <p>HTML / CSS / JS vanilla pur. Aucun framework, aucun bundler, aucune dépendance npm. Ouvrez et éditez.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tech-stack" style="margin-top:48px;">
+      <div class="tech-pill">HTML5 sémantique</div>
+      <div class="tech-pill">CSS Custom Properties</div>
+      <div class="tech-pill">JS Vanilla ES6+</div>
+      <div class="tech-pill">IntersectionObserver</div>
+      <div class="tech-pill">CSS Grid & Flexbox</div>
+      <div class="tech-pill">WCAG 2.1</div>
+      <div class="tech-pill">Google Fonts</div>
+      <div class="tech-pill">Responsive</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOR WHO ─── -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-tag">Pour qui ?</div>
+    <h2 class="section-h">Idéal pour <em>votre projet</em></h2>
+    <div class="usecases">
+      <div class="usecase-card">
+        <div class="usecase-emoji">🥋</div>
+        <h4>Clubs d'arts martiaux</h4>
+        <p>Judo, Ju-Jitsu, Aïkido, Karaté, Kendo… Toutes les disciplines bénéficiant d'une esthétique japonaise authentique.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-emoji">💻</div>
+        <h4>Développeurs freelance</h4>
+        <p>Base solide pour livrer rapidement un site clé en main à votre client. Personnalisable en quelques heures.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-emoji">🏫</div>
+        <h4>Associations sportives</h4>
+        <p>Clubs de sport de contact, dojos, académies de boxe ou de lutte. Adapté à tout club avec cours, horaires et tarifs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT'S INCLUDED ─── -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-tag" style="color:var(--gold)">Livraison</div>
+    <h2 class="section-h">Ce que vous <em>recevez</em></h2>
+    <ul class="checklist">
+      <li>9 fichiers HTML complets et interconnectés</li>
+      <li>1 feuille de styles CSS (1 fichier unique)</li>
+      <li>1 script JS vanilla (1 fichier unique)</li>
+      <li>Structure de dossier prête à déployer</li>
+      <li>Curseur personnalisé animé</li>
+      <li>Burger menu mobile accessible</li>
+      <li>Tableau d'horaires filtrable</li>
+      <li>Formulaire d'essai gratuit avec validation</li>
+      <li>Formulaire de contact avec validation</li>
+      <li>Timeline historique animée</li>
+      <li>Grille de cartes sensei</li>
+      <li>Section tarifs avec 4 formules</li>
+      <li>FAQ accordéon accessible</li>
+      <li>Galerie placeholder</li>
+      <li>Footer complet avec navigation</li>
+      <li>Licence commerciale — usage illimité</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section class="pricing-final" id="pricing">
+  <div class="container">
+    <div class="scroll-line"></div>
+    <div class="section-tag" style="color:var(--gold);justify-content:center;">Paiement unique · Sans abonnement</div>
+    <h2 class="section-h" style="text-align:center;">Achetez une fois,<br><em>utilisez pour toujours</em></h2>
+    <div class="price-display">
+      <span class="price-currency">€</span>
+      <span class="price-amount">29</span>
+      <span class="price-type">paiement<br>unique</span>
+    </div>
+    <div class="price-includes">
+      <div class="pi-item"><span>9 pages</span>complètes</div>
+      <div class="pi-item"><span>10 fichiers</span>livrés</div>
+      <div class="pi-item"><span>Licence</span>commerciale</div>
+      <div class="pi-item"><span>Mises à jour</span>incluses</div>
+    </div>
+    <a href="#" class="cta-big">Obtenir Bushido Dojo — 29€</a>
+    <p class="cta-note">Livraison instantanée · Paiement sécurisé via Gumroad</p>
+  </div>
+</section>
+
+</body>
+</html>
